@@ -1,0 +1,9 @@
+<div class="board">
+  <%= for _rank <- @state.board do %>
+    <div class="rank">
+      <%= for _square <- @state.board do %>
+        <div class="square"></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

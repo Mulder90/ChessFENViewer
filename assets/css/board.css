@@ -1,0 +1,31 @@
+:root {
+  --dark-square-bg: #b58863;
+  --light-square-bg: #f0d9b5;
+}
+
+.board {
+  display: grid;
+  grid-template-rows: repeat(8, 80px);
+  justify-content: center;
+}
+
+.rank {
+  display: grid;
+  grid-template-columns: repeat(8, 80px);
+}
+
+.rank:nth-child(odd) > .square:nth-child(odd)  {
+  background: var(--light-square-bg);
+}
+
+.rank:nth-child(odd) > .square:nth-child(even) {
+  background: var(--dark-square-bg);
+}
+
+.rank:nth-child(even) > .square:nth-child(even)  {
+  background: var(--light-square-bg);
+}
+
+.rank:nth-child(even) > .square:nth-child(odd) {
+  background: var(--dark-square-bg);
+}
