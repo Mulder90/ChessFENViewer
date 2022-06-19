@@ -1,3 +1,3 @@
 defmodule Chess.State do
-  defstruct board: Enum.map(1..8, fn _ -> Enum.map(1..8, fn _ -> nil end) end), current: :white
+  defstruct fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 end

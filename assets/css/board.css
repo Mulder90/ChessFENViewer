@@ -14,6 +14,10 @@
   grid-template-columns: repeat(8, 80px);
 }
 
+.square {
+  display: flex;
+}
+
 .rank:nth-child(odd) > .square:nth-child(odd)  {
   background: var(--light-square-bg);
 }

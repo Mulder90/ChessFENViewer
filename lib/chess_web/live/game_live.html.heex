@@ -1,8 +1,10 @@
 <div class="board">
-  <%= for _rank <- @state.board do %>
-    <div class="rank">
-      <%= for _square <- @state.board do %>
-        <div class="square"></div>
+  <%= for rank <- ["8", "7", "6", "5", "4", "3", "2", "1"] do %>
+    <div class="rank" data-rank={rank}>
+      <%= for file <- ["a", "b", "c", "d", "e", "f", "g", "8"] do %>
+        <div class="square" data-square={file <> rank}>
+          <img src={Routes.static_path(@socket, "/images/pieces/#{get_tile_state(@state.fen, file, rank)}.svg")} />
+        </div>
       <% end %>
     </div>
   <% end %>
