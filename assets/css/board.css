@@ -3,15 +3,30 @@
   --light-square-bg: #f0d9b5;
 }
 
+.fen_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.fen_form label {
+  margin-right: 1rem;
+}
+
+.fen_form input {
+  min-width: 400px;
+}
+
 .board {
   display: grid;
-  grid-template-rows: repeat(8, 80px);
+  grid-template-rows: repeat(8, 70px);
   justify-content: center;
 }
 
 .rank {
   display: grid;
-  grid-template-columns: repeat(8, 80px);
+  grid-template-columns: repeat(8, 70px);
 }
 
 .square {

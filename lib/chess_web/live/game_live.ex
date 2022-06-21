@@ -15,10 +15,15 @@ defmodule ChessWeb.GameLive do
     "K" => "k_w",
     "P" => "p_w"
   }
-  @fen "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+  @default_fen "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :assets, @assets)}
+    {:ok, assign(socket, :state, %{fen: @default_fen})}
+  end
+
+  def handle_event("set_fen", %{"_target" => [target]} = values, socket) do
+    fen = values[target]
+    {:noreply, assign(socket, :state, %{fen: fen})}
   end
 
   defp parse_fen_elem(elem) do
@@ -39,11 +44,16 @@ defmodule ChessWeb.GameLive do
     |> Enum.join("")
   end
 
-  def get_square(rank, file) do
-    @fen
+  def get_square(fen, rank, file) do
+    fen
     |> String.split(:binary.compile_pattern(["/", " "]))
     |> Enum.at(rank)
     |> explode_numbers()
     |> String.at(file)
+  end
+
+  def get_asset(fen, rank, file) do
+    square = get_square(fen, rank, file)
+    @assets[square]
   end
 end

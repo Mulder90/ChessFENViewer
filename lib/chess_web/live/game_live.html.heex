@@ -1,10 +1,14 @@
+<form class="fen_form" phx-change="set_fen">
+  <label for="fen">FEN:</label>
+  <input type="text" id="fen" name="fen" value={@state.fen} >
+</form>
 <div class="board">
   <%= for rank <- 0..7 do %>
     <div class="rank">
       <%= for file <- 0..7 do %>
         <div class="square">
-          <%= if get_square(rank, file) != "*" do %>
-            <img src={Routes.static_path(@socket, "/images/pieces/#{@assets[get_square(rank, file)]}.svg")} />
+          <%= if get_square(@state.fen, rank, file) != "*" do %>
+            <img src={Routes.static_path(@socket, "/images/pieces/#{get_asset(@state.fen, rank, file)}.svg")} />
           <% end %>
         </div>
       <% end %>
